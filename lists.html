@@ -1,13 +1,17 @@
 <head>
-  <title>lists</title>
+  <title>Sortable, editable, Drag-n-droppable lists</title>
 </head>
 
 <body>
-  {{> hello}}
+  {{> items}}
 </body>
 
-<template name="hello">
-  <h1>Hello World!</h1>
-  {{greeting}}
-  <input type="button" value="Click" />
+<template name='items'>
+  <ul>
+    {{#each items}}
+      <li>{{body}}</li>
+    {{/each}}
+  </ul>
+
+  <input type='button' value='New item' />
 </template>

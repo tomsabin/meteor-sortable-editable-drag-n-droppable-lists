@@ -1,19 +1,25 @@
-if (Meteor.isClient) {
-  Template.hello.greeting = function () {
-    return "Welcome to lists.";
-  };
+Items = new Meteor.Collection('items');
 
-  Template.hello.events({
+if (Meteor.isClient) {
+  Template.items.items = function () {
+    return Items.find();
+  }
+
+  Template.items.events({
     'click input': function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
+      console.log('You pressed the button');
     }
   });
 }
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    // code to run on server at startup
+    if (Items.find().count() === 0) {
+      _.each(
+        ['One', 'Two', 'Three'], function (body, index) {
+          Items.insert({ body: body, position: index });
+        }
+      );
+    }
   });
 }
