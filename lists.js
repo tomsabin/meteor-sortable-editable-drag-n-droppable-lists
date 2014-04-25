@@ -21,8 +21,11 @@ if (Meteor.isClient) {
   }
 
   Template.items.events({
+    focusout: function (e) {
+      Items.update({ _id: this._id }, { $set: { body: e.target.innerText }});
+    },
     'click input': function () {
-      Items.insert({ body: 'A new item' });
+      Items.insert({ body: 'Click to edit' });
     }
   });
 }
