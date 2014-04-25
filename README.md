@@ -1,6 +1,6 @@
 #Demo for a reactive, drag and drop, sortable and editable list in Meteor
 
-For a partially working example, visit [sortable-editable-drag-n-droppable-lists.meteor.com](sortable-editable-drag-n-droppable-lists.meteor.com).
+For a partially working example, visit [sortable-editable-drag-n-droppable-lists.meteor.com](http://sortable-editable-drag-n-droppable-lists.meteor.com/).
 
 For a fully working example, clone this repository, start the server and click away!
 
