@@ -31,7 +31,18 @@ if (Meteor.isClient) {
 
   Template.items.rendered = function () {
     $('ul').sortable({
-      handle: '.handle'
+      handle: '.handle',
+      stop: function (event, ui) {
+        _.each( $(event.target).children('li'), function(item, index, list) {
+          Items.update({
+            _id: item.getAttribute('data-item-id')
+          }, {
+            $set: {
+              position: index + 1
+            }
+          });
+        });
+      }
     });
   }
 }

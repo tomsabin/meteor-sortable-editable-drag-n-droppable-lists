@@ -13,7 +13,7 @@
 <template name='items'>
   <ul>
     {{#each items}}
-      <li>
+      <li data-item-id='{{_id}}'>
         <i class='handle fa fa-arrows-v'></i>
         <p contentEditable=true>{{body}}</p>
       </li>
