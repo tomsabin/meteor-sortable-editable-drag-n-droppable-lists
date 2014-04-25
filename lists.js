@@ -28,6 +28,10 @@ if (Meteor.isClient) {
       Items.insert({ body: 'Click to edit' });
     }
   });
+
+  Template.items.rendered = function () {
+    $('ul').sortable();
+  }
 }
 
 if (Meteor.isServer) {
