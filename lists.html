@@ -2,11 +2,21 @@
   <title>Sortable, editable, Drag-n-droppable lists</title>
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <style type>
-    p, i { display: inline }
+    li p, li i { display: inline }
   </style>
 </head>
 
 <body>
+  <h1>Reactive, drag and droppable, sortable and editable lists</h1>
+
+  <p>A partially working demo, without database updates/inserts (because I don't trust the internet).</p>
+
+  <p>In this demo, you <strong>can</strong> move items around and rename them but it <strong>won't be reactive</strong>. You <strong>cannot</strong> add new items and the position value <strong>will not</strong> update in this version.</p>
+
+  <p>See the <strong>console</strong> for what's meant to happen. Alternatively <a href='https://github.com/tomsabin/meteor-sortable-editable-drag-n-droppable-lists'>clone your own copy</a> and run it locally.</p>
+
+  <hr>
+
   {{> items}}
 </body>
 
@@ -15,10 +25,10 @@
     {{#each items}}
       <li data-item-id='{{_id}}'>
         <i class='handle fa fa-arrows-v'></i>
-        <p contentEditable=true>{{body}}</p>
+        <p contentEditable=true>{{body}} at position {{position}}</p>
       </li>
     {{/each}}
   </ul>
 
-  <input type='button' value='New item' />
+  <input type='button' value='New item' disabled=true />
 </template>

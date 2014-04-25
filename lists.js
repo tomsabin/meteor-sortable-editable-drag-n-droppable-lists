@@ -22,10 +22,10 @@ if (Meteor.isClient) {
 
   Template.items.events({
     focusout: function (e) {
-      Items.update({ _id: this._id }, { $set: { body: e.target.innerText }});
+      console.log('Update item body');
     },
     'click input': function () {
-      Items.insert({ body: 'Click to edit' });
+      console.log('Insert new item');
     }
   });
 
@@ -33,15 +33,7 @@ if (Meteor.isClient) {
     $('ul').sortable({
       handle: '.handle',
       stop: function (event, ui) {
-        _.each( $(event.target).children('li'), function(item, index, list) {
-          Items.update({
-            _id: item.getAttribute('data-item-id')
-          }, {
-            $set: {
-              position: index + 1
-            }
-          });
-        });
+        console.log('Update '+$(event.target).children('li').length+' positions');
       }
     });
   }
@@ -49,12 +41,12 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    // if (Items.find().count() === 0) {
-    //   _.each(
-    //     ['One', 'Two', 'Three'], function (body, index) {
-    //       Items.insert({ body: body, position: index + 1 });
-    //     }
-    //   );
-    // }
+    if (Items.find().count() === 0) {
+      _.each(
+        ['foo', 'bar', 'baz', 'qux'], function (body, index) {
+          Items.insert({ body: body, position: index + 1 });
+        }
+      );
+    }
   });
 }
