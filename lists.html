@@ -1,5 +1,9 @@
 <head>
   <title>Sortable, editable, Drag-n-droppable lists</title>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type>
+    p, i { display: inline }
+  </style>
 </head>
 
 <body>
@@ -9,7 +13,10 @@
 <template name='items'>
   <ul>
     {{#each items}}
-      <li contentEditable=true>{{body}}</li>
+      <li>
+        <i class='handle fa fa-arrows-v'></i>
+        <p contentEditable=true>{{body}}</p>
+      </li>
     {{/each}}
   </ul>
 

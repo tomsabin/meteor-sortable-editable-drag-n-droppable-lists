@@ -30,7 +30,9 @@ if (Meteor.isClient) {
   });
 
   Template.items.rendered = function () {
-    $('ul').sortable();
+    $('ul').sortable({
+      handle: '.handle'
+    });
   }
 }
 
